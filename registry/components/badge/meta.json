@@ -1,10 +1,10 @@
-{
+﻿{
   "name": "badge",
   "description": "Status/label badge với color variants",
   "version": "1.0.0",
   "files": ["badge.dart"],
   "dependencies": {
-    "pub": ["kinetic_ui_tokens"],
+    "pub": [],
     "components": []
   },
   "variants": ["default", "secondary", "outline", "destructive"],

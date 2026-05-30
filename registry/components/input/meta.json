@@ -1,10 +1,10 @@
-{
+﻿{
   "name": "input",
   "description": "Text input field với label và error state",
   "version": "1.0.0",
   "files": ["input.dart"],
   "dependencies": {
-    "pub": ["kinetic_ui_tokens"],
+    "pub": [],
     "components": []
   },
   "tags": ["form"]

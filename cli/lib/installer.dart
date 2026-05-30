@@ -16,7 +16,7 @@ class Installer {
     for (final relativePath in meta.files) {
       await _copyFile(
         registryPath: 'components/$name/$relativePath',
-        destPath: p.join(projectRoot, 'lib', 'ui', 'components', relativePath),
+        destPath: p.join(projectRoot, 'lib', 'widgets', 'ui', relativePath),
         force: force,
       );
     }
@@ -30,6 +30,7 @@ class Installer {
 
   Future<void> installThemeBase() async {
     const themeFiles = [
+      'theme/kinetic_tokens.dart',
       'theme/app_theme.dart',
       'theme/colors.dart',
       'theme/typography.dart',
@@ -39,7 +40,7 @@ class Installer {
     for (final file in themeFiles) {
       await _copyFile(
         registryPath: 'base/$file',
-        destPath: p.join(projectRoot, 'lib', 'ui', file),
+        destPath: p.join(projectRoot, 'lib', 'core', file),
         force: false,
         skipIfExists: true,
       );
@@ -49,7 +50,7 @@ class Installer {
   Future<void> _resolveDeps(List<String> deps, {required bool force}) async {
     for (final dep in deps) {
       final destFile = File(
-        p.join(projectRoot, 'lib', 'ui', 'components', '$dep.dart'),
+        p.join(projectRoot, 'lib', 'widgets', 'ui', '$dep.dart'),
       );
       if (!destFile.existsSync()) {
         _info('Installing dependency: $dep');

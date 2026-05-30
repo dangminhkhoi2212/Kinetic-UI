@@ -16,7 +16,7 @@ class DiffCommand {
 
       var anyDiff = false;
       for (final file in meta.files) {
-        final localPath = p.join(projectRoot, 'lib', 'ui', 'components', file);
+        final localPath = p.join(projectRoot, 'lib', 'widgets', 'ui', file);
         final localFile = File(localPath);
 
         if (!localFile.existsSync()) {

@@ -1,10 +1,10 @@
-{
+﻿{
   "name": "button",
   "description": "Accessible button với multiple variants",
   "version": "1.0.0",
   "files": ["button.dart"],
   "dependencies": {
-    "pub": ["kinetic_ui_tokens"],
+    "pub": [],
     "components": []
   },
   "variants": ["solid", "outline", "ghost", "destructive"],

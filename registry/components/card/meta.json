@@ -1,10 +1,10 @@
-{
+﻿{
   "name": "card",
   "description": "Container surface với padding chuẩn",
   "version": "1.0.0",
   "files": ["card.dart"],
   "dependencies": {
-    "pub": ["kinetic_ui_tokens"],
+    "pub": [],
     "components": []
   },
   "tags": ["layout"]

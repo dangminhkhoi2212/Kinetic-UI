@@ -1,10 +1,10 @@
-{
+﻿{
   "name": "label",
   "description": "Form label với required indicator",
   "version": "1.0.0",
   "files": ["label.dart"],
   "dependencies": {
-    "pub": ["kinetic_ui_tokens"],
+    "pub": [],
     "components": []
   },
   "tags": ["form"]

@@ -249,11 +249,13 @@ KineticTokens.light.copyWith(
 ```
 my_flutter_app/
 └── lib/
-    └── ui/
-        ├── components/     ← components được copy vào đây
-        │   ├── button.dart
-        │   └── ...
+    ├── widgets/
+    │   └── ui/             ← widgets được copy vào đây
+    │       ├── button.dart
+    │       └── ...
+    └── core/
         ├── theme/
+        │   ├── kinetic_tokens.dart   ← colors, spacing, KineticTokens — tự sửa
         │   ├── app_theme.dart
         │   ├── colors.dart
         │   ├── typography.dart
