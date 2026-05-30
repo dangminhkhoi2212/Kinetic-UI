@@ -24,6 +24,7 @@ class InitCommand {
     }
 
     await _patchPubspec(projectRoot);
+    await _runPubGet(projectRoot);
     _printNextSteps();
   }
 
@@ -65,6 +66,20 @@ class InitCommand {
     stdout.writeln('\x1B[32m  ✔ Added kinetic_ui_tokens to pubspec.yaml\x1B[0m');
   }
 
+  Future<void> _runPubGet(String root) async {
+    stdout.writeln('\x1B[36mRunning flutter pub get...\x1B[0m');
+    final result = await Process.run(
+      'flutter',
+      ['pub', 'get'],
+      workingDirectory: root,
+    );
+    if (result.exitCode != 0) {
+      stderr.writeln('\x1B[33mflutter pub get failed. Chạy thủ công:\n  flutter pub get\x1B[0m');
+    } else {
+      stdout.writeln('\x1B[32m  ✔ flutter pub get\x1B[0m');
+    }
+  }
+
   void _printNextSteps() {
     stdout.writeln('''
 
@@ -84,12 +99,12 @@ Next steps:
 
   2. Thêm components:
 
-     \x1B[36mkinetic add button\x1B[0m
-     \x1B[36mkinetic add card dialog\x1B[0m
+     \x1B[36mdart run kinetic_ui:kinetic add button\x1B[0m
+     \x1B[36mdart run kinetic_ui:kinetic add card dialog\x1B[0m
 
   3. Xem tất cả components:
 
-     \x1B[36mkinetic list\x1B[0m
+     \x1B[36mdart run kinetic_ui:kinetic list\x1B[0m
 ''');
   }
 }
