@@ -1,0 +1,9 @@
+{
+  "name": "spinner",
+  "description": "Loading spinner 4 kích cỡ",
+  "version": "1.0.0",
+  "files": ["spinner.dart"],
+  "dependencies": { "pub": [], "components": [] },
+  "variants": ["sm", "md", "lg", "xl"],
+  "tags": ["feedback"]
+}

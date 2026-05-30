@@ -1,0 +1,9 @@
+{
+  "name": "slider",
+  "description": "Range slider với label và value display",
+  "version": "1.0.0",
+  "files": ["slider.dart"],
+  "dependencies": { "pub": [], "components": [] },
+  "variants": [],
+  "tags": ["form"]
+}

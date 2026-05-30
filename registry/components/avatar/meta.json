@@ -1,0 +1,9 @@
+{
+  "name": "avatar",
+  "description": "User avatar với image, initials và icon fallback",
+  "version": "1.0.0",
+  "files": ["avatar.dart"],
+  "dependencies": { "pub": [], "components": [] },
+  "variants": ["default", "bordered"],
+  "tags": ["display"]
+}

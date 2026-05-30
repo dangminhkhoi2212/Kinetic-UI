@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:kinetic_ui_tokens/kinetic_ui_tokens.dart';
 
-enum ToastVariant { info, success, warning, destructive }
+enum ToastVariant { info, success, warning, danger }
 
 class KToast extends StatelessWidget {
   const KToast({
@@ -45,17 +45,17 @@ class KToast extends StatelessWidget {
     final tokens = Theme.of(context).extension<KineticTokens>()!;
 
     final (icon, iconColor) = switch (variant) {
-      ToastVariant.info        => (Icons.info_outline,           tokens.primary),
-      ToastVariant.success     => (Icons.check_circle_outline,   const Color(0xFF22C55E)),
-      ToastVariant.warning     => (Icons.warning_amber_outlined, const Color(0xFFF59E0B)),
-      ToastVariant.destructive => (Icons.error_outline,          tokens.destructive),
+      ToastVariant.info    => (Icons.info_outline,           tokens.primary),
+      ToastVariant.success => (Icons.check_circle_outline,   tokens.success),
+      ToastVariant.warning => (Icons.warning_amber_outlined, tokens.warning),
+      ToastVariant.danger  => (Icons.error_outline,          tokens.danger),
     };
 
     return Container(
       padding:     const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration:  BoxDecoration(
-        color:        Theme.of(context).colorScheme.surface,
-        border:       Border.all(color: tokens.border),
+        color:        tokens.content1,
+        border:       Border.all(color: tokens.divider),
         borderRadius: BorderRadius.circular(tokens.radiusMd),
         boxShadow: [
           BoxShadow(
@@ -85,7 +85,7 @@ class KToast extends StatelessWidget {
             const SizedBox(width: 4),
             IconButton(
               onPressed: onClose,
-              icon:      Icon(Icons.close, size: 16, color: tokens.onMuted),
+              icon:      Icon(Icons.close, size: 16, color: tokens.defaultForeground),
               visualDensity: VisualDensity.compact,
             ),
           ],

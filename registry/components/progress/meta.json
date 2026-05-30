@@ -1,0 +1,9 @@
+{
+  "name": "progress",
+  "description": "Linear và circular progress indicator",
+  "version": "1.0.0",
+  "files": ["progress.dart"],
+  "dependencies": { "pub": [], "components": [] },
+  "variants": ["bar", "circle"],
+  "tags": ["feedback"]
+}

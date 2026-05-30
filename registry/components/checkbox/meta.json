@@ -1,0 +1,9 @@
+{
+  "name": "checkbox",
+  "description": "Checkbox form control với label và description",
+  "version": "1.0.0",
+  "files": ["checkbox.dart"],
+  "dependencies": { "pub": [], "components": [] },
+  "variants": ["sm", "md", "lg"],
+  "tags": ["form"]
+}

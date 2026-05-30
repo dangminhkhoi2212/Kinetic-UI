@@ -2,58 +2,114 @@
 import 'package:flutter/material.dart';
 import 'package:kinetic_ui_tokens/kinetic_ui_tokens.dart';
 
-enum BadgeVariant { primary, secondary, outline, destructive }
+enum BadgePlacement { topRight, topLeft, bottomRight, bottomLeft }
+enum BadgeVariant   { solid, flat, faded, shadow }
+enum BadgeColor     { default_, primary, secondary, success, warning, danger }
 
 class KBadge extends StatelessWidget {
   const KBadge({
     super.key,
-    required this.label,
-    this.variant = BadgeVariant.primary,
-    this.icon,
+    required this.child,
+    this.count,
+    this.isVisible  = true,
+    this.isDot      = false,
+    this.max        = 99,
+    this.color      = BadgeColor.danger,
+    this.variant    = BadgeVariant.solid,
+    this.placement  = BadgePlacement.topRight,
   });
 
-  final String       label;
-  final BadgeVariant variant;
-  final Widget?      icon;
+  final Widget         child;
+  final int?           count;
+  final bool           isVisible;
+  final bool           isDot;
+  final int            max;
+  final BadgeColor     color;
+  final BadgeVariant   variant;
+  final BadgePlacement placement;
 
   @override
   Widget build(BuildContext context) {
     final tokens = Theme.of(context).extension<KineticTokens>()!;
+    final base   = _base(tokens);
+    final fg     = _fg(tokens);
 
-    final (bg, fg, border) = switch (variant) {
-      BadgeVariant.primary     => (tokens.primary,     tokens.onPrimary,     Colors.transparent),
-      BadgeVariant.secondary   => (tokens.muted,        tokens.primary,       Colors.transparent),
-      BadgeVariant.outline     => (Colors.transparent, tokens.primary,       tokens.border),
-      BadgeVariant.destructive => (tokens.destructive, tokens.onDestructive, Colors.transparent),
+    final (bgColor, fgColor, hasShadow) = switch (variant) {
+      BadgeVariant.solid  => (base,                          fg,   false),
+      BadgeVariant.flat   => (base.withValues(alpha: 0.15),  base, false),
+      BadgeVariant.faded  => (tokens.content2,               base, false),
+      BadgeVariant.shadow => (base,                          fg,   true),
     };
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-      decoration: BoxDecoration(
-        color:        bg,
-        border:       Border.all(color: border),
-        borderRadius: BorderRadius.circular(9999),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 4,
-        children: [
-          if (icon != null)
-            IconTheme(
-              data: IconThemeData(size: 12, color: fg),
-              child: icon!,
-            ),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize:   12,
-              fontWeight: FontWeight.w500,
-              color:      fg,
-              height:     1.5,
+    final show = isVisible && (isDot || (count != null && count! > 0));
+    if (!show) return child;
+
+    final label  = isDot ? '' : (count! > max ? '$max+' : '$count');
+    final badgeH = isDot ? 8.0 : 18.0;
+    final badgeW = isDot ? 8.0 : (label.length > 2 ? 24.0 : 18.0);
+
+    final alignment = switch (placement) {
+      BadgePlacement.topRight    => Alignment.topRight,
+      BadgePlacement.topLeft     => Alignment.topLeft,
+      BadgePlacement.bottomRight => Alignment.bottomRight,
+      BadgePlacement.bottomLeft  => Alignment.bottomLeft,
+    };
+    final offset = switch (placement) {
+      BadgePlacement.topRight    => Offset(badgeW / 2, -badgeH / 2),
+      BadgePlacement.topLeft     => Offset(-badgeW / 2, -badgeH / 2),
+      BadgePlacement.bottomRight => Offset(badgeW / 2, badgeH / 2),
+      BadgePlacement.bottomLeft  => Offset(-badgeW / 2, badgeH / 2),
+    };
+
+    final List<BoxShadow> shadows = hasShadow
+        ? [BoxShadow(color: base.withValues(alpha: 0.4), blurRadius: 6, offset: const Offset(0, 2))]
+        : [];
+
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        child,
+        Positioned.fill(
+          child: Align(
+            alignment: alignment,
+            child: Transform.translate(
+              offset: offset,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                width: badgeW, height: badgeH,
+                decoration: BoxDecoration(
+                  color:        bgColor,
+                  borderRadius: BorderRadius.circular(9999),
+                  border:       Border.all(color: tokens.background, width: 1.5),
+                  boxShadow:    shadows,
+                ),
+                alignment: Alignment.center,
+                child: isDot
+                    ? null
+                    : Text(label, style: TextStyle(color: fgColor, fontSize: 10, fontWeight: FontWeight.w600, height: 1)),
+              ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
+
+  Color _base(KineticTokens t) => switch (color) {
+    BadgeColor.default_  => t.defaultForeground,
+    BadgeColor.primary   => t.primary,
+    BadgeColor.secondary => t.secondary,
+    BadgeColor.success   => t.success,
+    BadgeColor.warning   => t.warning,
+    BadgeColor.danger    => t.danger,
+  };
+
+  Color _fg(KineticTokens t) => switch (color) {
+    BadgeColor.default_  => t.background,
+    BadgeColor.primary   => t.primaryForeground,
+    BadgeColor.secondary => t.secondaryForeground,
+    BadgeColor.success   => t.successForeground,
+    BadgeColor.warning   => t.warningForeground,
+    BadgeColor.danger    => t.dangerForeground,
+  };
 }

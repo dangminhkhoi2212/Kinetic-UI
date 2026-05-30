@@ -55,7 +55,7 @@ class _KSkeletonState extends State<KSkeleton>
         height: widget.height,
         decoration: BoxDecoration(
           borderRadius: radius,
-          color: Color.lerp(tokens.muted, tokens.border, _anim.value),
+          color: Color.lerp(tokens.defaultColor, tokens.divider, _anim.value),
         ),
       ),
     );

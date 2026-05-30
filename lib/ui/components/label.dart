@@ -26,12 +26,12 @@ class KLabel extends StatelessWidget {
           style: TextStyle(
             fontSize:   14,
             fontWeight: FontWeight.w500,
-            color:      disabled ? tokens.onMuted : null,
+            color:      disabled ? tokens.defaultForeground : null,
           ),
         ),
         if (required) ...[
           const SizedBox(width: 2),
-          Text('*', style: TextStyle(color: tokens.destructive, fontSize: 14)),
+          Text('*', style: TextStyle(color: tokens.danger, fontSize: 14)),
         ],
       ],
     );

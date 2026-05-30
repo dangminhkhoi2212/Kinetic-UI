@@ -1,0 +1,9 @@
+{
+  "name": "kswitch",
+  "description": "Toggle switch với animated thumb",
+  "version": "1.0.0",
+  "files": ["kswitch.dart"],
+  "dependencies": { "pub": [], "components": [] },
+  "variants": ["sm", "md", "lg"],
+  "tags": ["form"]
+}

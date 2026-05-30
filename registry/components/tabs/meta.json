@@ -1,0 +1,9 @@
+{
+  "name": "tabs",
+  "description": "Tab navigation với primary và secondary variants",
+  "version": "1.0.0",
+  "files": ["tabs.dart"],
+  "dependencies": { "pub": [], "components": [] },
+  "variants": ["primary", "secondary"],
+  "tags": ["navigation"]
+}

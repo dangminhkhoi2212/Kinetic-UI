@@ -36,7 +36,7 @@ class KDialog extends StatelessWidget {
     return Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(tokens.radiusLg),
-        side:         BorderSide(color: tokens.border),
+        side:         BorderSide(color: tokens.divider),
       ),
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: maxWidth),
@@ -54,7 +54,7 @@ class KDialog extends StatelessWidget {
               if (description != null) ...[
                 const SizedBox(height: 8),
                 DefaultTextStyle.merge(
-                  style: TextStyle(fontSize: 14, color: tokens.onMuted),
+                  style: TextStyle(fontSize: 14, color: tokens.defaultForeground),
                   child: description!,
                 ),
               ],

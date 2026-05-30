@@ -1,14 +1,24 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "components": [
-    { "name": "button",    "description": "Accessible button với multiple variants",      "tags": ["form", "action"] },
-    { "name": "card",      "description": "Container surface với padding chuẩn",           "tags": ["layout"] },
-    { "name": "input",     "description": "Text input field với label và error state",     "tags": ["form"] },
-    { "name": "badge",     "description": "Status/label badge với color variants",         "tags": ["display"] },
-    { "name": "skeleton",  "description": "Loading placeholder shimmer effect",            "tags": ["feedback"] },
-    { "name": "separator", "description": "Horizontal/vertical divider",                   "tags": ["layout"] },
-    { "name": "label",     "description": "Form label với required indicator",             "tags": ["form"] },
-    { "name": "dialog",    "description": "Modal dialog accessible với backdrop",          "tags": ["overlay"] },
-    { "name": "toast",     "description": "Notification toast với auto-dismiss",           "tags": ["feedback", "overlay"] }
+    { "name": "button",    "description": "Button với 6 variants HeroUI Native style",         "tags": ["form", "action"] },
+    { "name": "card",      "description": "Container surface với 4 variants",                   "tags": ["layout"] },
+    { "name": "input",     "description": "Text input với label, helper và error state",        "tags": ["form"] },
+    { "name": "badge",     "description": "Notification count overlay trên bất kỳ widget nào", "tags": ["display"] },
+    { "name": "chip",      "description": "Semantic label chip với 3 variants và 6 màu",       "tags": ["display"] },
+    { "name": "avatar",    "description": "User avatar với image, initials và icon fallback",   "tags": ["display"] },
+    { "name": "alert",     "description": "Alert banner với 5 status variants",                 "tags": ["feedback"] },
+    { "name": "checkbox",  "description": "Checkbox form control với label và description",     "tags": ["form"] },
+    { "name": "radio",     "description": "Radio group form control",                           "tags": ["form"] },
+    { "name": "kswitch",   "description": "Toggle switch với animated thumb",                   "tags": ["form"] },
+    { "name": "progress",  "description": "Linear và circular progress indicator",              "tags": ["feedback"] },
+    { "name": "spinner",   "description": "Loading spinner 4 kích cỡ",                         "tags": ["feedback"] },
+    { "name": "tabs",      "description": "Tab navigation với primary và secondary variants",   "tags": ["navigation"] },
+    { "name": "slider",    "description": "Range slider với label và value display",            "tags": ["form"] },
+    { "name": "skeleton",  "description": "Loading placeholder shimmer effect",                 "tags": ["feedback"] },
+    { "name": "separator", "description": "Horizontal/vertical divider với 3 variants",        "tags": ["layout"] },
+    { "name": "label",     "description": "Form label với required indicator",                  "tags": ["form"] },
+    { "name": "dialog",    "description": "Modal dialog với backdrop",                          "tags": ["overlay"] },
+    { "name": "toast",     "description": "Notification toast với 4 variants",                  "tags": ["feedback", "overlay"] }
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "name": "radio",
+  "description": "Radio group form control",
+  "version": "1.0.0",
+  "files": ["radio.dart"],
+  "dependencies": { "pub": [], "components": [] },
+  "variants": [],
+  "tags": ["form"]
+}

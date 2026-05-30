@@ -1,0 +1,9 @@
+{
+  "name": "chip",
+  "description": "Semantic label chip với 3 variants và 6 màu",
+  "version": "1.0.0",
+  "files": ["chip.dart"],
+  "dependencies": { "pub": [], "components": [] },
+  "variants": ["solid", "flat", "bordered"],
+  "tags": ["display"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "alert",
+  "description": "Alert banner với 5 status variants",
+  "version": "1.0.0",
+  "files": ["alert.dart"],
+  "dependencies": { "pub": [], "components": [] },
+  "variants": ["default", "primary", "success", "warning", "danger"],
+  "tags": ["feedback"]
+}
