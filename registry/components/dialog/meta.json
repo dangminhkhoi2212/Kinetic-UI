@@ -1,0 +1,11 @@
+{
+  "name": "dialog",
+  "description": "Modal dialog accessible với backdrop",
+  "version": "1.0.0",
+  "files": ["dialog.dart"],
+  "dependencies": {
+    "pub": ["kinetic_ui_tokens"],
+    "components": ["button"]
+  },
+  "tags": ["overlay"]
+}

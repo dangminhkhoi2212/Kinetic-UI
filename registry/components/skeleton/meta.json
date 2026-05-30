@@ -1,0 +1,11 @@
+{
+  "name": "skeleton",
+  "description": "Loading placeholder shimmer effect",
+  "version": "1.0.0",
+  "files": ["skeleton.dart"],
+  "dependencies": {
+    "pub": ["kinetic_ui_tokens"],
+    "components": []
+  },
+  "tags": ["feedback"]
+}

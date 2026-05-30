@@ -1,0 +1,11 @@
+{
+  "name": "toast",
+  "description": "Notification toast với auto-dismiss",
+  "version": "1.0.0",
+  "files": ["toast.dart"],
+  "dependencies": {
+    "pub": ["kinetic_ui_tokens"],
+    "components": []
+  },
+  "tags": ["feedback", "overlay"]
+}

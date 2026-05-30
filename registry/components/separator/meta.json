@@ -1,0 +1,11 @@
+{
+  "name": "separator",
+  "description": "Horizontal/vertical divider",
+  "version": "1.0.0",
+  "files": ["separator.dart"],
+  "dependencies": {
+    "pub": ["kinetic_ui_tokens"],
+    "components": []
+  },
+  "tags": ["layout"]
+}

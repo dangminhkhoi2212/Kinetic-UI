@@ -1,0 +1,17 @@
+name: kinetic_ui_tokens
+description: Design tokens for kinetic_ui — Flutter UI component library
+version: 1.0.0
+homepage: https://github.com/dangminhkhoi2212/Kinetic-UI
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.10.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0

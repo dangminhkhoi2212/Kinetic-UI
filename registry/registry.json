@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "components": [
+    { "name": "button",    "description": "Accessible button với multiple variants",      "tags": ["form", "action"] },
+    { "name": "card",      "description": "Container surface với padding chuẩn",           "tags": ["layout"] },
+    { "name": "input",     "description": "Text input field với label và error state",     "tags": ["form"] },
+    { "name": "badge",     "description": "Status/label badge với color variants",         "tags": ["display"] },
+    { "name": "skeleton",  "description": "Loading placeholder shimmer effect",            "tags": ["feedback"] },
+    { "name": "separator", "description": "Horizontal/vertical divider",                   "tags": ["layout"] },
+    { "name": "label",     "description": "Form label với required indicator",             "tags": ["form"] },
+    { "name": "dialog",    "description": "Modal dialog accessible với backdrop",          "tags": ["overlay"] },
+    { "name": "toast",     "description": "Notification toast với auto-dismiss",           "tags": ["feedback", "overlay"] }
+  ]
+}

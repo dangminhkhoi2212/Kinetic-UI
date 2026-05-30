@@ -21,7 +21,7 @@
 | Thư viện | `kinetic_ui` |
 | CLI command | `kinetic` |
 | Tokens package | `kinetic_ui_tokens` |
-| Registry base URL | `https://raw.githubusercontent.com/your-org/kinetic_ui/main/registry` |
+| Registry base URL | `https://raw.githubusercontent.com/dangminhkhoi2212/Kinetic-UI/main/registry` |
 | Install | `dart pub global activate kinetic_ui` |
 
 ---
@@ -176,7 +176,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 
 const _registryBase =
-    'https://raw.githubusercontent.com/your-org/kinetic_ui/main/registry';
+    'https://raw.githubusercontent.com/dangminhkhoi2212/Kinetic-UI/main/registry';
 
 class RegistryClient {
   final http.Client _http;
