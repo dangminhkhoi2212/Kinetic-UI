@@ -55,14 +55,26 @@ class InitCommand {
     var content = pubspec.readAsStringSync();
     if (content.contains('kinetic_ui_tokens')) return;
 
-    content = content.replaceFirst(
-      RegExp(r'(dependencies:\s*\n)'),
-      '\$1  kinetic_ui_tokens:\n'
-      '    git:\n'
-      '      url: https://github.com/dangminhkhoi2212/Kinetic-UI.git\n'
-      '      path: packages/kinetic_ui_tokens\n',
-    );
-    await pubspec.writeAsString(content);
+    // Detect indent level from existing dependencies (2-space or 4-space)
+    final indentMatch = RegExp(r'dependencies:\s*\n(\s+)\S').firstMatch(content);
+    final i1 = indentMatch?.group(1) ?? '  ';
+    final i2 = '$i1  ';
+
+    final lines = content.split('\n');
+    final depIdx = lines.indexWhere((l) => RegExp(r'^dependencies:\s*$').hasMatch(l));
+    if (depIdx == -1) {
+      stderr.writeln('\x1B[33mKhông tìm thấy "dependencies:" trong pubspec.yaml\x1B[0m');
+      return;
+    }
+
+    lines.insertAll(depIdx + 1, [
+      '${i1}kinetic_ui_tokens:',
+      '${i2}git:',
+      '${i2}  url: https://github.com/dangminhkhoi2212/Kinetic-UI.git',
+      '${i2}  path: packages/kinetic_ui_tokens',
+    ]);
+
+    await pubspec.writeAsString(lines.join('\n'));
     stdout.writeln('\x1B[32m  ✔ Added kinetic_ui_tokens to pubspec.yaml\x1B[0m');
   }
 

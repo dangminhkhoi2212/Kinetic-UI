@@ -41,6 +41,7 @@ class Installer {
         registryPath: 'base/$file',
         destPath: p.join(projectRoot, 'lib', 'ui', file),
         force: false,
+        skipIfExists: true,
       );
     }
   }
@@ -61,14 +62,18 @@ class Installer {
     required String registryPath,
     required String destPath,
     required bool force,
+    bool skipIfExists = false,
   }) async {
     final destFile = File(destPath);
 
-    if (destFile.existsSync() && !force) {
-      final overwrite = _prompt('⚠️  $destPath đã tồn tại. Overwrite? (y/N): ');
-      if (overwrite.toLowerCase() != 'y') {
-        _warn('Skipped: $destPath');
-        return;
+    if (destFile.existsSync()) {
+      if (skipIfExists) return;
+      if (!force) {
+        final overwrite = _prompt('⚠️  $destPath đã tồn tại. Overwrite? (y/N): ');
+        if (overwrite.toLowerCase() != 'y') {
+          _warn('Skipped: $destPath');
+          return;
+        }
       }
     }
 
