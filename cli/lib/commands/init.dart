@@ -56,7 +56,10 @@ class InitCommand {
 
     content = content.replaceFirst(
       RegExp(r'(dependencies:\s*\n)'),
-      '\$1  kinetic_ui_tokens: ^1.0.0\n',
+      '\$1  kinetic_ui_tokens:\n'
+      '    git:\n'
+      '      url: https://github.com/dangminhkhoi2212/Kinetic-UI.git\n'
+      '      path: packages/kinetic_ui_tokens\n',
     );
     await pubspec.writeAsString(content);
     stdout.writeln('\x1B[32m  ✔ Added kinetic_ui_tokens to pubspec.yaml\x1B[0m');
