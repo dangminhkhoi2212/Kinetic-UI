@@ -13,13 +13,21 @@ Flutter UI component library theo phong cách [shadcn/ui](https://ui.shadcn.com/
 
 ---
 
-## Cài đặt CLI
+## Cài đặt
 
-```bash
-dart pub global activate kinetic_ui
+Thêm vào `pubspec.yaml` của Flutter project:
+
+```yaml
+dev_dependencies:
+  kinetic_ui:
+    git:
+      url: https://github.com/dangminhkhoi2212/Kinetic-UI.git
+      path: cli
 ```
 
-Đảm bảo `~/.pub-cache/bin` (hoặc `%APPDATA%\Pub\Cache\bin` trên Windows) nằm trong `PATH`.
+```bash
+flutter pub get
+```
 
 ---
 
@@ -29,7 +37,7 @@ dart pub global activate kinetic_ui
 
 ```bash
 cd my_flutter_app
-kinetic init
+dart run kinetic_ui:kinetic init
 ```
 
 Lệnh này sẽ:
@@ -55,8 +63,8 @@ MaterialApp(
 ### 3. Thêm components
 
 ```bash
-kinetic add button
-kinetic add card dialog input    # nhiều component cùng lúc
+dart run kinetic_ui:kinetic add button
+dart run kinetic_ui:kinetic add card dialog input    # nhiều component cùng lúc
 ```
 
 ### 4. Dùng component
@@ -76,12 +84,12 @@ KButton(
 
 | Command | Mô tả |
 |---|---|
-| `kinetic init` | Khởi tạo `lib/ui/` + copy theme base |
-| `kinetic add <name...>` | Thêm một hoặc nhiều component |
-| `kinetic add <name> --force` | Overwrite file đã tồn tại |
-| `kinetic list` | Xem tất cả components trong registry |
-| `kinetic list --tag=form` | Lọc theo tag |
-| `kinetic diff <name>` | So sánh file local vs registry |
+| `dart run kinetic_ui:kinetic init` | Khởi tạo `lib/ui/` + copy theme base |
+| `dart run kinetic_ui:kinetic add <name...>` | Thêm một hoặc nhiều component |
+| `dart run kinetic_ui:kinetic add <name> --force` | Overwrite file đã tồn tại |
+| `dart run kinetic_ui:kinetic list` | Xem tất cả components trong registry |
+| `dart run kinetic_ui:kinetic list --tag=form` | Lọc theo tag |
+| `dart run kinetic_ui:kinetic diff <name>` | So sánh file local vs registry |
 
 ---
 

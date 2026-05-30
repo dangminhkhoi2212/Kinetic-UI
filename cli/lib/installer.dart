@@ -90,6 +90,7 @@ class Installer {
       'flutter',
       ['pub', 'add', ...packages],
       workingDirectory: projectRoot,
+      runInShell: true,
     );
 
     if (result.exitCode != 0) {

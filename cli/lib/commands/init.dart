@@ -84,6 +84,7 @@ class InitCommand {
       'flutter',
       ['pub', 'get'],
       workingDirectory: root,
+      runInShell: true,
     );
     if (result.exitCode != 0) {
       stderr.writeln('\x1B[33mflutter pub get failed. Chạy thủ công:\n  flutter pub get\x1B[0m');
