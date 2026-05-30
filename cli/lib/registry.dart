@@ -1,9 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-
-const _registryBase =
-    'https://raw.githubusercontent.com/dangminhkhoi2212/Kinetic-UI/main/registry';
+import 'constants.dart';
 
 class RegistryClient {
   final http.Client _http;
@@ -11,7 +9,7 @@ class RegistryClient {
   RegistryClient({http.Client? client}) : _http = client ?? http.Client();
 
   Future<Map<String, dynamic>> fetchIndex() async {
-    final uri = Uri.parse('$_registryBase/registry.json');
+    final uri = Uri.parse('$registryBaseUrl/registry.json');
     final res = await _http.get(uri).timeout(
       const Duration(seconds: 10),
       onTimeout: () => throw RegistryException('Registry timeout. Kiểm tra mạng.'),
@@ -25,7 +23,7 @@ class RegistryClient {
   }
 
   Future<ComponentMeta> fetchMeta(String name) async {
-    final uri = Uri.parse('$_registryBase/components/$name/meta.json');
+    final uri = Uri.parse('$registryBaseUrl/components/$name/meta.json');
     final res = await _http.get(uri).timeout(const Duration(seconds: 10));
 
     if (res.statusCode == 404) {
@@ -39,7 +37,7 @@ class RegistryClient {
   }
 
   Future<String> fetchFileContent(String relativePath) async {
-    final uri = Uri.parse('$_registryBase/$relativePath');
+    final uri = Uri.parse('$registryBaseUrl/$relativePath');
     final res = await _http.get(uri).timeout(const Duration(seconds: 10));
 
     if (res.statusCode != 200) {
