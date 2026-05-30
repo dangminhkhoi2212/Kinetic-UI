@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Recurse \"e:\\\\Projects\\\\kinetic_ui\" -Depth 3 | Where-Object { !$_.PSIsContainer } | Select-Object FullName)"
+    ]
+  }
+}
