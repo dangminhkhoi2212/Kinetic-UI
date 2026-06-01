@@ -15,40 +15,58 @@ class KCard extends StatelessWidget {
     this.child,
   });
 
-  final CardVariant   variant;
-  final Widget?       header;
-  final Widget?       footer;
-  final EdgeInsets?   padding;
+  final CardVariant variant;
+  final Widget? header;
+  final Widget? footer;
+  final EdgeInsets? padding;
   final VoidCallback? onTap;
-  final Widget?       child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
     final tokens = Theme.of(context).extension<KineticTokens>()!;
 
     final (bgColor, borderColor, shadowOpacity) = switch (variant) {
-      CardVariant.default_    => (tokens.content1,      tokens.divider,      0.04),
-      CardVariant.secondary   => (tokens.content2,      Colors.transparent,  0.0),
-      CardVariant.tertiary    => (tokens.content3,      Colors.transparent,  0.0),
-      CardVariant.transparent => (Colors.transparent,   Colors.transparent,  0.0),
+      CardVariant.default_ => (tokens.content1, tokens.divider, 0.04),
+      CardVariant.secondary => (tokens.content2, Colors.transparent, 0.0),
+      CardVariant.tertiary => (tokens.content3, Colors.transparent, 0.0),
+      CardVariant.transparent => (Colors.transparent, Colors.transparent, 0.0),
     };
 
     final card = Container(
       decoration: BoxDecoration(
-        color:        bgColor,
-        border:       borderColor == Colors.transparent ? null : Border.all(color: borderColor),
+        color: bgColor,
+        border: borderColor == Colors.transparent
+            ? null
+            : Border.all(color: borderColor),
         borderRadius: BorderRadius.circular(tokens.radiusLg),
-        boxShadow:    shadowOpacity > 0 ? [BoxShadow(color: Colors.black.withValues(alpha: shadowOpacity), blurRadius: 4, offset: const Offset(0, 1))] : null,
+        boxShadow: shadowOpacity > 0
+            ? [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: shadowOpacity),
+                  blurRadius: 4,
+                  offset: const Offset(0, 1),
+                ),
+              ]
+            : null,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          if (header != null) Padding(padding: padding ?? const EdgeInsets.fromLTRB(20, 20, 20, 0), child: header),
-          if (child != null)  Padding(padding: padding ?? const EdgeInsets.all(20), child: child),
+          if (header != null)
+            Padding(
+              padding: padding ?? const EdgeInsets.fromLTRB(20, 20, 20, 0),
+              child: header,
+            ),
+          if (child != null)
+            Padding(padding: padding ?? const EdgeInsets.all(20), child: child),
           if (footer != null) ...[
             Divider(height: 1, color: tokens.divider),
-            Padding(padding: padding ?? const EdgeInsets.fromLTRB(20, 14, 20, 14), child: footer),
+            Padding(
+              padding: padding ?? const EdgeInsets.fromLTRB(20, 14, 20, 14),
+              child: footer,
+            ),
           ],
         ],
       ),
@@ -58,7 +76,11 @@ class KCard extends StatelessWidget {
       return Material(
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(tokens.radiusLg),
-        child: InkWell(onTap: onTap, borderRadius: BorderRadius.circular(tokens.radiusLg), child: card),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(tokens.radiusLg),
+          child: card,
+        ),
       );
     }
     return card;
@@ -66,8 +88,13 @@ class KCard extends StatelessWidget {
 }
 
 class KCardHeader extends StatelessWidget {
-  const KCardHeader({super.key, required this.title, this.subtitle, this.action});
-  final Widget  title;
+  const KCardHeader({
+    super.key,
+    required this.title,
+    this.subtitle,
+    this.action,
+  });
+  final Widget title;
   final Widget? subtitle;
   final Widget? action;
 
@@ -81,15 +108,27 @@ class KCardHeader extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DefaultTextStyle.merge(style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600), child: title),
+              DefaultTextStyle.merge(
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                child: title,
+              ),
               if (subtitle != null) ...[
                 const SizedBox(height: 3),
-                DefaultTextStyle.merge(style: TextStyle(fontSize: 13, color: tokens.defaultForeground), child: subtitle!),
+                DefaultTextStyle.merge(
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: tokens.defaultForeground,
+                  ),
+                  child: subtitle!,
+                ),
               ],
             ],
           ),
         ),
-        if (action != null) action!,
+        ?action,
       ],
     );
   }

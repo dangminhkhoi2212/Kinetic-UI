@@ -29,13 +29,7 @@ class Installer {
   }
 
   Future<void> installThemeBase() async {
-    const themeFiles = [
-      'theme/kinetic_tokens.dart',
-      'theme/app_theme.dart',
-      'theme/colors.dart',
-      'theme/typography.dart',
-      'theme/spacing.dart',
-    ];
+    const themeFiles = ['theme/kinetic_tokens.dart', 'theme/app_theme.dart'];
 
     for (final file in themeFiles) {
       await _copyFile(
@@ -70,7 +64,9 @@ class Installer {
     if (destFile.existsSync()) {
       if (skipIfExists) return;
       if (!force) {
-        final overwrite = _prompt('⚠️  $destPath đã tồn tại. Overwrite? (y/N): ');
+        final overwrite = _prompt(
+          '⚠️  $destPath đã tồn tại. Overwrite? (y/N): ',
+        );
         if (overwrite.toLowerCase() != 'y') {
           _warn('Skipped: $destPath');
           return;
@@ -95,8 +91,10 @@ class Installer {
     );
 
     if (result.exitCode != 0) {
-      _warn('flutter pub add failed. Thêm thủ công:\n'
-            '  flutter pub add ${packages.join(' ')}');
+      _warn(
+        'flutter pub add failed. Thêm thủ công:\n'
+        '  flutter pub add ${packages.join(' ')}',
+      );
       return;
     }
 
@@ -111,6 +109,6 @@ class Installer {
   }
 
   void _success(String msg) => print('\x1B[32m$msg\x1B[0m');
-  void _warn(String msg)    => print('\x1B[33m$msg\x1B[0m');
-  void _info(String msg)    => print('\x1B[36m$msg\x1B[0m');
+  void _warn(String msg) => print('\x1B[33m$msg\x1B[0m');
+  void _info(String msg) => print('\x1B[36m$msg\x1B[0m');
 }
