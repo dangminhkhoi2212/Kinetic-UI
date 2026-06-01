@@ -21,6 +21,13 @@ dev_dependencies:
 flutter pub get
 ```
 
+Note: if you installed `kinetic_ui` before, remove it first and add it again to update:
+
+```bash
+flutter pub remove kinetic_ui
+flutter pub get
+```
+
 ## Usage
 
 ```bash
