@@ -17,9 +17,11 @@ class ListCommand {
             }).toList();
 
       if (filtered.isEmpty) {
-        stdout.writeln(tag != null
-            ? 'Không có component nào với tag "$tag".'
-            : 'Registry trống.');
+        stdout.writeln(
+          tag != null
+              ? 'No components found with tag "$tag".'
+              : 'Registry is empty.',
+        );
         return;
       }
 
@@ -51,14 +53,16 @@ class ListCommand {
     stdout.writeln(divider);
 
     for (final c in components) {
-      final name  = c['name'] as String;
-      final desc  = (c['description'] as String).length > 40
+      final name = c['name'] as String;
+      final desc = (c['description'] as String).length > 40
           ? '${(c['description'] as String).substring(0, 37)}...'
           : c['description'] as String;
-      final tags  = ((c['tags'] as List?)?.cast<String>() ?? []).join(', ');
+      final tags = ((c['tags'] as List?)?.cast<String>() ?? []).join(', ');
       stdout.writeln(fmt(name, desc, tags));
     }
 
-    stdout.writeln('\n  \x1B[36mkinetic add <name>\x1B[0m  to install a component');
+    stdout.writeln(
+      '\n  \x1B[36mkinetic add <name>\x1B[0m  to install a component',
+    );
   }
 }

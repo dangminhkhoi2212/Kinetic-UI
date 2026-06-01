@@ -6,14 +6,15 @@ import 'package:kinetic_ui/commands/list.dart';
 import 'package:kinetic_ui/commands/diff.dart';
 
 void main(List<String> arguments) async {
-  final runner = CommandRunner<void>(
-    'kinetic',
-    'kinetic_ui — Flutter UI component CLI (shadcn/ui style)',
-  )
-    ..addCommand(_InitCmd())
-    ..addCommand(_AddCmd())
-    ..addCommand(_ListCmd())
-    ..addCommand(_DiffCmd());
+  final runner =
+      CommandRunner<void>(
+          'kinetic',
+          'kinetic_ui — Flutter UI component CLI (shadcn/ui style)',
+        )
+        ..addCommand(_InitCmd())
+        ..addCommand(_AddCmd())
+        ..addCommand(_ListCmd())
+        ..addCommand(_DiffCmd());
 
   try {
     await runner.run(arguments);
@@ -24,20 +25,29 @@ void main(List<String> arguments) async {
 }
 
 class _InitCmd extends Command<void> {
-  @override String get name => 'init';
-  @override String get description => 'Khởi tạo kinetic_ui trong Flutter project hiện tại';
+  @override
+  String get name => 'init';
+  @override
+  String get description =>
+      'Initialize kinetic_ui in the current Flutter project';
 
   @override
   Future<void> run() => InitCommand().run();
 }
 
 class _AddCmd extends Command<void> {
-  @override String get name => 'add';
-  @override String get description => 'Thêm một hoặc nhiều component vào project';
+  @override
+  String get name => 'add';
+  @override
+  String get description => 'Add one or more components to the project';
 
   _AddCmd() {
-    argParser.addFlag('force', abbr: 'f', defaultsTo: false,
-        help: 'Overwrite file nếu đã tồn tại');
+    argParser.addFlag(
+      'force',
+      abbr: 'f',
+      defaultsTo: false,
+      help: 'Overwrite file if it already exists',
+    );
   }
 
   @override
@@ -52,11 +62,17 @@ class _AddCmd extends Command<void> {
 }
 
 class _ListCmd extends Command<void> {
-  @override String get name => 'list';
-  @override String get description => 'Xem danh sách tất cả components trong registry';
+  @override
+  String get name => 'list';
+  @override
+  String get description => 'View all components in the registry';
 
   _ListCmd() {
-    argParser.addOption('tag', abbr: 't', help: 'Lọc theo tag (vd: form, overlay)');
+    argParser.addOption(
+      'tag',
+      abbr: 't',
+      help: 'Filter by tag (e.g., form, overlay)',
+    );
   }
 
   @override
@@ -64,8 +80,10 @@ class _ListCmd extends Command<void> {
 }
 
 class _DiffCmd extends Command<void> {
-  @override String get name => 'diff';
-  @override String get description => 'So sánh file local vs registry (checksum)';
+  @override
+  String get name => 'diff';
+  @override
+  String get description => 'Compare local file vs registry (checksum)';
 
   @override
   Future<void> run() async {

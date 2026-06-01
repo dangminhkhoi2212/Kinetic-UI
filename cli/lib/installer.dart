@@ -65,7 +65,7 @@ class Installer {
       if (skipIfExists) return;
       if (!force) {
         final overwrite = _prompt(
-          '⚠️  $destPath đã tồn tại. Overwrite? (y/N): ',
+          '⚠️  $destPath already exists. Overwrite? (y/N): ',
         );
         if (overwrite.toLowerCase() != 'y') {
           _warn('Skipped: $destPath');
@@ -92,7 +92,7 @@ class Installer {
 
     if (result.exitCode != 0) {
       _warn(
-        'flutter pub add failed. Thêm thủ công:\n'
+        'flutter pub add failed. Add manually:\n'
         '  flutter pub add ${packages.join(' ')}',
       );
       return;

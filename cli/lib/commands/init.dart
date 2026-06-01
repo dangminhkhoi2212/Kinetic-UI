@@ -29,11 +29,11 @@ class InitCommand {
   void _assertFlutterProject(String root) {
     final pubspec = File(p.join(root, 'pubspec.yaml'));
     if (!pubspec.existsSync()) {
-      stderr.writeln('❌  Không tìm thấy pubspec.yaml.');
+      stderr.writeln('❌  pubspec.yaml not found.');
       exit(1);
     }
     if (!pubspec.readAsStringSync().contains('flutter:')) {
-      stderr.writeln('❌  pubspec.yaml không phải Flutter project.');
+      stderr.writeln('❌  pubspec.yaml is not a Flutter project.');
       exit(1);
     }
   }
@@ -54,7 +54,7 @@ class InitCommand {
 \x1B[1m🎉  kinetic_ui initialized!\x1B[0m
 
 Next steps:
-  1. Wrap MaterialApp với KineticTokens:
+  1. Wrap MaterialApp with KineticTokens:
 
      import 'core/theme/kinetic_tokens.dart';
 
@@ -67,16 +67,16 @@ Next steps:
        ),
      )
 
-  2. Thêm widgets:
+  2. Add widgets:
 
      \x1B[36mdart run kinetic_ui:kinetic add button\x1B[0m
      \x1B[36mdart run kinetic_ui:kinetic add card dialog\x1B[0m
 
-  3. Dùng widget trong code:
+  3. Use a widget in code:
 
      import 'widgets/ui/button.dart';
 
-  4. Xem tất cả widgets:
+  4. View all widgets:
 
      \x1B[36mdart run kinetic_ui:kinetic list\x1B[0m
 ''');

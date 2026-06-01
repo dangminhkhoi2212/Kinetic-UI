@@ -9,13 +9,18 @@ class RegistryClient {
 
   Future<Map<String, dynamic>> fetchIndex() async {
     final uri = Uri.parse('$registryBaseUrl/registry.json');
-    final res = await _http.get(uri).timeout(
-      const Duration(seconds: 10),
-      onTimeout: () => throw RegistryException('Registry timeout. Kiểm tra mạng.'),
-    );
+    final res = await _http
+        .get(uri)
+        .timeout(
+          const Duration(seconds: 10),
+          onTimeout: () =>
+              throw RegistryException('Registry timeout. Check your network.'),
+        );
 
     if (res.statusCode != 200) {
-      throw RegistryException('Không fetch được registry (HTTP ${res.statusCode})');
+      throw RegistryException(
+        'Failed to fetch registry (HTTP ${res.statusCode})',
+      );
     }
 
     return jsonDecode(res.body) as Map<String, dynamic>;
@@ -26,10 +31,14 @@ class RegistryClient {
     final res = await _http.get(uri).timeout(const Duration(seconds: 10));
 
     if (res.statusCode == 404) {
-      throw RegistryException('Component "$name" không tồn tại trong registry.');
+      throw RegistryException(
+        'Component "$name" does not exist in the registry.',
+      );
     }
     if (res.statusCode != 200) {
-      throw RegistryException('Lỗi fetch meta "$name" (HTTP ${res.statusCode})');
+      throw RegistryException(
+        'Failed to fetch meta "$name" (HTTP ${res.statusCode})',
+      );
     }
 
     return ComponentMeta.fromJson(jsonDecode(res.body));
@@ -40,7 +49,7 @@ class RegistryClient {
     final res = await _http.get(uri).timeout(const Duration(seconds: 10));
 
     if (res.statusCode != 200) {
-      throw RegistryException('Không fetch được file: $relativePath');
+      throw RegistryException('Failed to fetch file: $relativePath');
     }
 
     return res.body;
