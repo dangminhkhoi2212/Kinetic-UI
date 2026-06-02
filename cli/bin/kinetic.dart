@@ -48,16 +48,31 @@ class _AddCmd extends Command<void> {
       defaultsTo: false,
       help: 'Overwrite file if it already exists',
     );
+
+    argParser.addFlag(
+      'all',
+      defaultsTo: false,
+      help: 'Install all components from the registry',
+    );
   }
 
   @override
   Future<void> run() async {
+    final force = argResults!['force'] as bool;
+    final all = argResults!['all'] as bool;
+
+    if (all) {
+      await AddCommand().runAll(force: force);
+      return;
+    }
+
     final names = argResults!.rest;
     if (names.isEmpty) {
       stderr.writeln('Usage: kinetic add <component> [component...]');
       exit(64);
     }
-    await AddCommand().run(names, force: argResults!['force'] as bool);
+
+    await AddCommand().run(names, force: force);
   }
 }
 
